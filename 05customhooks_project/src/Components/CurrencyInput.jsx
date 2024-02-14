@@ -1,20 +1,37 @@
 import { useId } from "react";
-import { useCurrencyConverter } from "../Hooks/useCurrencyConverter";
 
 const CurrencyInput = (props) => {
-  const { inputLabel } = props;
+  const {
+    inputLabel,
+    selectedCurrency,
+    currencyOptions,
+    amount,
+    setAmount,
+    currencyChange,
+  } = props;
   const inputId = useId();
-  const currencyData = useCurrencyConverter("usd");
-
-  console.log("currencyData ----> ", currencyData);
 
   return (
     <div>
       <label htmlFor={inputId}>{inputLabel}</label>
-      <input type="text" id={inputId} />
+      <input
+        type="text"
+        id={inputId}
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
       <label>Currency Type</label>
-      <select>
-        <option value="usd">usd</option>
+      <select
+        value={selectedCurrency}
+        onChange={(e) => currencyChange(e.target.value)}
+      >
+        {currencyOptions.map((curr) => {
+          return (
+            <option value={curr} key={`${curr}-${inputId}`}>
+              {curr}
+            </option>
+          );
+        })}
       </select>
     </div>
   );

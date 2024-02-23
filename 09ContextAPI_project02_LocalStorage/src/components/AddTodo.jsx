@@ -15,6 +15,8 @@ const AddTodo = (props) => {
       <input
         type="text"
         value={todo}
+        className={`m-[10px] p-[5px] border-[1px]`}
+        placeholder="Add Todo"
         onChange={(e) => setTodo(e.target.value)}
       />
       <button onClick={addTodo}>Add</button>

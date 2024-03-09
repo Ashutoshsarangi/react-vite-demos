@@ -33,9 +33,9 @@ const Header = (props) => {
 
   return (
     <div>
-      <nav>
+      <nav className="bg-blue-700 flex justify-between h-[50px] items-center text-white cursor-pointer">
         <div>Logo</div>
-        <ul>
+        <ul className="flex space-x-4">
           {navItem.map(
             (item) => item.active && <li key={item.name}>{item.name}</li>
           )}

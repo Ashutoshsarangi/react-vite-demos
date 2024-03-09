@@ -4,7 +4,6 @@ import { Outlet } from "react-router-dom";
 import authService from "./appwrite/auth";
 import { login, logout } from "./store/auth/auth.slice";
 import { Header, Footer } from "./components";
-import "./App.css";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -32,7 +31,6 @@ function App() {
         <span>Loading....</span>
       ) : (
         <div>
-          <h1> test</h1>
           <Header />
           <main>
             <Outlet />

@@ -6,21 +6,6 @@ const Header = (props) => {
   const navItem = [
     {
       name: "Home",
-      path: "/",
-      active: true,
-    },
-    {
-      name: "Login",
-      path: "/login",
-      active: !authStatus,
-    },
-    {
-      name: "Sign Up",
-      path: "/signup",
-      active: !authStatus,
-    },
-    {
-      name: "All Posts",
       path: "/all-posts",
       active: authStatus,
     },
@@ -32,17 +17,19 @@ const Header = (props) => {
   ];
 
   return (
-    <div>
-      <nav className="bg-blue-700 flex justify-between h-[50px] items-center text-white cursor-pointer">
-        <div>Logo</div>
-        <ul className="flex space-x-4">
-          {navItem.map(
-            (item) => item.active && <li key={item.name}>{item.name}</li>
-          )}
-        </ul>
-        <div>{authStatus && <button>Log Out</button>}</div>
-      </nav>
-    </div>
+    <nav className="bg-blue-600 flex justify-between h-[50px] items-center text-white cursor-pointer p-3">
+      <div>Logo</div>
+      <ul className="flex space-x-4">
+        {navItem.map(
+          (item) => item.active && <li key={item.name}>{item.name}</li>
+        )}
+      </ul>
+      <div className=" space-x-5">
+        {!authStatus && <Link to="/login">Sign in</Link>}
+        {!authStatus && <Link to="/sign-up">Sign Up</Link>}
+        {authStatus && <Link>Log Out</Link>}
+      </div>
+    </nav>
   );
 };
 

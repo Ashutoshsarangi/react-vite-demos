@@ -1,50 +1,79 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import Input from "./Input";
+import authService from "../appwrite/auth";
 
 const Signup = (props) => {
   const {
     register,
     handleSubmit,
+    control,
+    reset,
     watch,
     formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(watch("example"));
+  } = useForm({
+    email: "",
+    name: "",
+    password: "",
+  });
+
+  const onSubmit = (data) => {
+    if (Object.keys(data).length) {
+      authService.createAccount(data);
+    }
+    reset({ email: "", name: "", password: "" });
+  };
+  console.log("Errors -->", errors);
+  console.log(watch("email"), errors);
+
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          label="Email"
-          placeholder="Enter Email"
-          type="text"
-          {...register("email", {
-            required: true,
-            pattern:
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="email"
+        control={control}
+        rules={{
+          required: "This is a required field",
+          pattern: {
+            value:
               /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
-          })}
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-        <Input
-          label="Name"
-          placeholder="Enter name"
-          type="text"
-          {...register("name", {
-            required: true,
-            minLength: 6,
-            maxLength: 20,
-          })}
-        />
-        {errors.name && <p>{errors.name.message}</p>}
-        <Input
-          label="Password"
-          placeholder="Enter Password"
-          type="password"
-          {...register("password", { required: true, minLength: 5 })}
-        />
-        <button>Submit</button>
-      </form>
-    </div>
+            message: " Should follow the Proper Email Pattern",
+          },
+        }}
+        render={({ field }) => (
+          <Input
+            label="Email"
+            placeholder="Enter Email"
+            type="text"
+            {...field}
+          />
+        )}
+      />
+      {errors.email?.message && <p>{errors.email.message}</p>}
+      <Controller
+        name="name"
+        rules={{
+          required: true,
+        }}
+        control={control}
+        render={({ field }) => (
+          <Input label="Name" placeholder="Enter name" type="text" {...field} />
+        )}
+      />
+      {errors.name && <p>{errors.name.message}</p>}
+      <Controller
+        name="password"
+        control={control}
+        rules={{ required: true }}
+        render={({ field }) => (
+          <Input
+            label="Password"
+            placeholder="Enter Password"
+            type="password"
+            {...field}
+          />
+        )}
+      />
+      <input type="submit" />
+    </form>
   );
 };
 

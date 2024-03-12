@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import AllPosts from "./pages/AllPosts";
-import Dashboard from "./pages/Dashboard";
+import { LoginPage, SignUpPage } from "./pages";
 import App from "./App";
 
 const router = createBrowserRouter([
@@ -9,8 +8,12 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "all-post",
-        element: <AllPosts />,
+        path: "login",
+        element: <LoginPage />,
+      },
+      {
+        path: "sign-up",
+        element: <SignUpPage />,
       },
     ],
   },

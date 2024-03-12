@@ -5,16 +5,16 @@ class AuthService {
   client = new Client();
 
   constructor() {
+    this.account = new Account(this.client);
     this.client
       .setEndpoint(config.APPWRITE_ENDPOINT) // Your API Endpoint
       .setProject(config.PROJECT_ID); // Your project ID
-
-    this.account = new Account(this.client);
   }
 
-  async createAccount({ email, password }) {
+  async createAccount({ email, password, name }) {
+    console.log("inside Create account ---> ", email, password);
     try {
-      const res = await this.account.create(ID.unique(), email, password);
+      const res = await this.account.create(ID.unique(), email, password, name);
       if (res) {
         return this.login({ email, password });
       } else {

@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import authService from "./appwrite/auth";
 import { login, logout } from "./store/auth/auth.slice";
 import { Header, Footer } from "./components";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   console.log("AuthState using useSelector---> ", authState);
@@ -17,8 +18,10 @@ function App() {
         console.log("User --> ", user);
         if (user) {
           dispatch(login({ userData: user }));
+          navigate("/dashboard");
         } else {
           dispatch(logout({ name: "Ashu", testPayload: true }));
+          navigate("/login");
         }
       })
       .catch((err) => console.log(err))

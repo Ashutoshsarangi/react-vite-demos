@@ -4,12 +4,12 @@ import { config } from "../config/config";
 class DataBase {
   client = new Client();
   constructor() {
-    client
+    this.client
       .setEndpoint(config.APPWRITE_ENDPOINT) // Your API Endpoint
       .setProject(config.PROJECT_ID); // Your project ID
 
-    this.databases = new Databases(client);
-    this.storage = new Storage(client);
+    this.databases = new Databases(this.client);
+    this.storage = new Storage(this.client);
   }
 
   async createDocument({

@@ -1,4 +1,5 @@
 import { Controller, useForm } from "react-hook-form";
+import { Editor } from "@tinymce/tinymce-react";
 
 const TextEditor = (props) => {
   const { control } = useForm();

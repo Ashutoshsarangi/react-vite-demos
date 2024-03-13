@@ -6,7 +6,7 @@ const Header = (props) => {
   const navItem = [
     {
       name: "Home",
-      path: "/all-posts",
+      path: "/dashboard",
       active: authStatus,
     },
     {
@@ -21,7 +21,12 @@ const Header = (props) => {
       <div>Logo</div>
       <ul className="flex space-x-4">
         {navItem.map(
-          (item) => item.active && <li key={item.name}>{item.name}</li>
+          (item) =>
+            item.active && (
+              <li key={item.name}>
+                <Link to={item.path}>{item.name}</Link>
+              </li>
+            )
         )}
       </ul>
       <div className=" space-x-5">

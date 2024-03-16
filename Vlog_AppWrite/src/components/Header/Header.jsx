@@ -1,8 +1,12 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
+import authService from "../../appwrite/auth";
+import { logout } from "../../store/auth/auth.slice";
+
 const Header = (props) => {
   const authStatus = useSelector((state) => state.auth.status);
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const navItem = [
     {
       name: "Home",
@@ -15,6 +19,14 @@ const Header = (props) => {
       active: authStatus,
     },
   ];
+
+  const logout = async () => {
+    const result = await authService.logout();
+    if (result) {
+      dispatch(logout({}));
+      navigate("/login");
+    }
+  };
 
   return (
     <nav className="bg-blue-600 flex justify-between h-[50px] items-center text-white cursor-pointer p-3">
@@ -32,7 +44,7 @@ const Header = (props) => {
       <div className=" space-x-5">
         {!authStatus && <Link to="/login">Sign in</Link>}
         {!authStatus && <Link to="/sign-up">Sign Up</Link>}
-        {authStatus && <Link>Log Out</Link>}
+        {authStatus && <Link onClick={logout}>Log Out</Link>}
       </div>
     </nav>
   );

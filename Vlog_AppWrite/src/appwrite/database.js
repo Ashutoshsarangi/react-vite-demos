@@ -12,14 +12,7 @@ class DataBase {
     this.storage = new Storage(this.client);
   }
 
-  async createDocument({
-    title,
-    slug,
-    content,
-    featuredImage,
-    status,
-    userId,
-  }) {
+  async createDocument({ title, content, featuredImage, status, userId }) {
     try {
       return await this.databases.createDocument(
         config.DATABASE_ID,
@@ -27,7 +20,6 @@ class DataBase {
         ID.unique(),
         {
           title,
-          slug,
           content,
           featuredImage,
           status,

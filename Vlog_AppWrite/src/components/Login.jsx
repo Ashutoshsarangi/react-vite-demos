@@ -1,14 +1,30 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import authService from "../appwrite/auth";
+import { login } from "../store/auth/auth.slice";
 import Input from "./Input";
 
 const Login = (props) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+    try {
+      const result = await authService.login(data);
+      console.log(result);
+      dispatch(login({ userData: result }));
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   console.log(watch("example"));
 
   return (

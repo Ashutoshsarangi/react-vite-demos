@@ -6,12 +6,12 @@ const Card = (props) => {
       </div>
 
       <div className="flex justify-between items-center">
-        <p>
+        <div>
           <span className="text-2xl text-black font-bold">$45,2K</span>
           <p className="text-slate-500 text-sm">Total Profit</p>
-        </p>
+        </div>
         <span className="text-green-500">
-          4.35% <i class="fa-solid fa-arrow-up"></i>
+          4.35% <i className="fa-solid fa-arrow-up"></i>
         </span>
       </div>
     </div>

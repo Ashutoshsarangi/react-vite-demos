@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./SidePanel.css";
 
 const SidePanel = ({ showPanel, setShowPanel }) => {
   return (
@@ -10,36 +12,42 @@ const SidePanel = ({ showPanel, setShowPanel }) => {
     >
       <div className="p-4">
         <div className="lg:hidden flex items-center mb-4 justify-between cursor-pointer">
-          <h2 className="text-xl font-semibold ">Company Name</h2>
+          <h2 className="text-xl font-semibold ">
+            <Link to="/dashboard">Company Name</Link>
+          </h2>
           <i
             className="fa-solid fa-arrow-left h-[30px] w-[30px] bg-slate-500 pl-2 rounded-full text-xl text-white"
             onClick={() => setShowPanel(!showPanel)}
           ></i>
         </div>
 
-        <ul className="menu text-l xl:text-xl">
+        <ul className="menu text-l xl:text-xl ">
           <li>
-            <span>Item 1</span>
+            <Link to="/item1">Item 1</Link>
           </li>
           <li>
             <details open>
-              <summary>Parent</summary>
+              <summary>
+                <Link to="/lalit">Lalit</Link>
+              </summary>
               <ul className="border-l">
                 <li>
-                  <a>Submenu 1</a>
+                  <Link to="/lalit/amulya">Amulya</Link>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <Link to="/lalit/devi">Devi Prasad</Link>
                 </li>
                 <li>
                   <details>
-                    <summary>Parent</summary>
+                    <summary>
+                      <Link to="/lalit/sasmita">Sasmita</Link>
+                    </summary>
                     <ul className="border-l">
                       <li>
-                        <a>Submenu 1</a>
+                        <Link to="/lalit/sasmita/sonu">Subhalaxmi</Link>
                       </li>
                       <li>
-                        <a>Submenu 2</a>
+                        <Link to="/lalit/sasmita/kalu">Ram Sankar</Link>
                       </li>
                     </ul>
                   </details>
@@ -49,23 +57,25 @@ const SidePanel = ({ showPanel, setShowPanel }) => {
           </li>
           <li>
             <details open>
-              <summary>Parent</summary>
+              <summary>
+                <Link to="bansi">Bansidhar</Link>
+              </summary>
               <ul className="border-l">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>Gangadhar</a>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <a>Srinibas</a>
                 </li>
                 <li>
                   <details open>
-                    <summary>Parent</summary>
+                    <summary>Sanghamitra</summary>
                     <ul className="border-l">
                       <li>
-                        <a>Submenu 1</a>
+                        <a>Ashutosh</a>
                       </li>
                       <li>
-                        <a>Submenu 2</a>
+                        <a>Anshuman</a>
                       </li>
                     </ul>
                   </details>
@@ -74,10 +84,17 @@ const SidePanel = ({ showPanel, setShowPanel }) => {
             </details>
           </li>
           <li>
-            <a>Item 3</a>
+            <Link to="/item3">Item 3</Link>
           </li>
           <li>
-            <a>Item 4</a>
+            <Link to="/item4">Item 4</Link>
+          </li>
+          <hr></hr>
+          <li>
+            <Link to="/todo">Todo</Link>
+          </li>
+          <li>
+            <Link to="/setting">Settings</Link>
           </li>
         </ul>
       </div>

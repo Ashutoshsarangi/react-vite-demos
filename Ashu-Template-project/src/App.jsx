@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Outlet, useNavigate, Link } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import SidePanel from "./layout/SidePanel/SidePanel";
 import "./App.css";
 
 const POPUP_TYPES = {
@@ -10,6 +12,11 @@ const POPUP_TYPES = {
 
 function App() {
   const [showPanel, setShowPanel] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/dashboard");
+  }, []);
 
   const handleChangeTheme = (e) => {
     const dot = document.querySelector(".dot");
@@ -17,28 +24,6 @@ function App() {
       dot.style.transform = "translateX(100%)";
     } else {
       dot.style.transform = "translateX(0)";
-    }
-  };
-
-  const handlePopUp = (type) => {
-    switch (type) {
-      case POPUP_TYPES.MESSAGE:
-        setShowMessagePopUp((showMessagePopUp) => !showMessagePopUp);
-        setShowNotificationPopUp(false);
-        setShowUserPopUp(false);
-        break;
-      case POPUP_TYPES.NOTIFICATION:
-        setShowMessagePopUp(false);
-        setShowNotificationPopUp(
-          (showNotificationPopUp) => !showNotificationPopUp
-        );
-        setShowUserPopUp(false);
-        break;
-      case POPUP_TYPES.USER:
-        setShowMessagePopUp(false);
-        setShowNotificationPopUp(false);
-        setShowUserPopUp((showUserPopUp) => !showUserPopUp);
-        break;
     }
   };
 
@@ -50,7 +35,9 @@ function App() {
             className="fa-solid fa-bars shadow p-2 bg-slate-100 lg:hidden"
             onClick={() => setShowPanel(!showPanel)}
           ></i>
-          <div className="hidden lg:block">Company Name </div>
+          <div className="hidden lg:block">
+            <Link to="/dashboard">Company Name</Link>{" "}
+          </div>
           <div className="flex items-center space-x-10">
             <details className="dropdown dropdown-end">
               <summary className="inline-flex text-2xl">
@@ -115,7 +102,7 @@ function App() {
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>Profile</a>
+                  <Link to="/profile">Profile</Link>
                 </li>
                 <li>
                   <a>Log In</a>
@@ -128,7 +115,12 @@ function App() {
           </div>
         </div>
       </nav>
-      <Dashboard {...{ showPanel, setShowPanel }} />
+      <div className="h-[calc(100vh-80px)] overflow-hidden shadow flex justify-center">
+        <SidePanel {...{ showPanel, setShowPanel }} />
+        <div className="container mt-3 mb-3 mr-2 p-2 ml-2">
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 }

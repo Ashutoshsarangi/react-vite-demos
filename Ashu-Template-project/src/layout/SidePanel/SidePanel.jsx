@@ -1,8 +1,16 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import useSidePanel from "../../context/sidepanel.context";
 import "./SidePanel.css";
 
-const SidePanel = ({ showPanel, setShowPanel }) => {
+const SidePanel = () => {
+  const { showPanel, setShowPanel } = useSidePanel();
+  const handleMenuClick = (e) => {
+    console.log(e);
+    if (e.view.innerWidth <= 1024) {
+      setShowPanel(!showPanel);
+    }
+  };
+
   return (
     <div
       id="sidePanel"
@@ -21,7 +29,10 @@ const SidePanel = ({ showPanel, setShowPanel }) => {
           ></i>
         </div>
 
-        <ul className="menu text-l xl:text-xl ">
+        <ul
+          className="menu text-l xl:text-xl "
+          onClick={(e) => handleMenuClick(e)}
+        >
           <li>
             <Link to="/item1">Item 1</Link>
           </li>

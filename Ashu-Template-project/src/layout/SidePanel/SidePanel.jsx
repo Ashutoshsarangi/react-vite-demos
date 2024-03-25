@@ -98,7 +98,7 @@ const SidePanel = () => {
             <Link to="/item3">Item 3</Link>
           </li>
           <li>
-            <Link to="/item4">Item 4</Link>
+            <Link to="/data-table">Data Table</Link>
           </li>
           <hr></hr>
           <li>
@@ -106,6 +106,12 @@ const SidePanel = () => {
           </li>
           <li>
             <Link to="/setting">Settings</Link>
+          </li>
+          <li>
+            <Link to="/price">Price</Link>
+          </li>
+          <li>
+            <Link to="/contact/1">Contact</Link>
           </li>
         </ul>
       </div>

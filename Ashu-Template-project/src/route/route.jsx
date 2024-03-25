@@ -1,12 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Todo from "../pages/Todo/Todo";
+import Pricing from "../pages/Pricing/Pricing";
+import ErrorPage from "../pages/Error/Error";
+import Contact, { contactLoader } from "../pages/Contact/Contact";
+import Datatable from "../pages/DataTable/Datatable";
 import App from "../App";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "dashboard",
@@ -69,8 +74,8 @@ export const router = createBrowserRouter([
         element: <h1>Hello I am Item 3</h1>,
       },
       {
-        path: "item4",
-        element: <h1>Hello I am Item 4</h1>,
+        path: "data-table",
+        element: <Datatable />,
       },
       {
         path: "todo",
@@ -83,6 +88,15 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <h1>Hello I am Profile Page</h1>,
+      },
+      {
+        path: "price",
+        element: <Pricing />,
+      },
+      {
+        path: "contact/:contactId",
+        element: <Contact />,
+        loader: contactLoader,
       },
     ],
   },

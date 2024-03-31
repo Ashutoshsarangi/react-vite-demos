@@ -21,7 +21,7 @@ const SidePanel = () => {
       <div className="p-4">
         <div className="lg:hidden flex items-center mb-4 justify-between cursor-pointer">
           <h2 className="text-xl font-semibold ">
-            <Link to="/dashboard">Company Name</Link>
+            <Link to="/dashboard">Ashu Tech Solutions</Link>
           </h2>
           <i
             className="fa-solid fa-arrow-left h-[30px] w-[30px] bg-slate-500 pl-2 rounded-full text-xl text-white"
@@ -34,84 +34,28 @@ const SidePanel = () => {
           onClick={(e) => handleMenuClick(e)}
         >
           <li>
-            <Link to="/item1">Item 1</Link>
-          </li>
-          <li>
             <details open>
               <summary>
-                <Link to="/lalit">Lalit</Link>
+                <Link to="/projects">Projects</Link>
               </summary>
               <ul className="border-l">
                 <li>
-                  <Link to="/lalit/amulya">Amulya</Link>
+                  <Link to="/projects/web">Web Applications</Link>
                 </li>
                 <li>
-                  <Link to="/lalit/devi">Devi Prasad</Link>
-                </li>
-                <li>
-                  <details>
-                    <summary>
-                      <Link to="/lalit/sasmita">Sasmita</Link>
-                    </summary>
-                    <ul className="border-l">
-                      <li>
-                        <Link to="/lalit/sasmita/sonu">Subhalaxmi</Link>
-                      </li>
-                      <li>
-                        <Link to="/lalit/sasmita/kalu">Ram Sankar</Link>
-                      </li>
-                    </ul>
-                  </details>
+                  <Link to="/projects/mobile">Mobile Applications</Link>
                 </li>
               </ul>
             </details>
           </li>
           <li>
-            <details open>
-              <summary>
-                <Link to="bansi">Bansidhar</Link>
-              </summary>
-              <ul className="border-l">
-                <li>
-                  <a>Gangadhar</a>
-                </li>
-                <li>
-                  <a>Srinibas</a>
-                </li>
-                <li>
-                  <details open>
-                    <summary>Sanghamitra</summary>
-                    <ul className="border-l">
-                      <li>
-                        <a>Ashutosh</a>
-                      </li>
-                      <li>
-                        <a>Anshuman</a>
-                      </li>
-                    </ul>
-                  </details>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <Link to="/item3">Item 3</Link>
-          </li>
-          <li>
-            <Link to="/data-table">Data Table</Link>
-          </li>
-          <hr></hr>
-          <li>
-            <Link to="/todo">Todo</Link>
-          </li>
-          <li>
-            <Link to="/setting">Settings</Link>
+            <Link to="/about">About Me</Link>
           </li>
           <li>
             <Link to="/price">Price</Link>
           </li>
           <li>
-            <Link to="/contact/1">Contact</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
       </div>

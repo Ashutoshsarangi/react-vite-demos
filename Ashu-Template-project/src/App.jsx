@@ -4,6 +4,7 @@ import { SidePanelProvider } from "./context/sidepanel.context";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Header from "./layout/Header/Header";
 import SidePanel from "./layout/SidePanel/SidePanel";
+import Footer from "./layout/Footer/Footer";
 import "./App.css";
 
 const POPUP_TYPES = {
@@ -24,12 +25,13 @@ function App() {
     <>
       <SidePanelProvider value={{ showPanel, setShowPanel }}>
         <Header />
-        <div className="h-[calc(100vh-80px)] overflow-hidden shadow flex justify-center">
+        <div className="h-[calc(100vh-110px)] overflow-hidden shadow flex justify-center">
           <SidePanel />
-          <div className="container mt-3 mb-3 mr-2 p-2 ml-2">
+          <div className="container mt-3 mb-3 mr-2 p-2 ml-2 overflow-scroll">
             <Outlet />
           </div>
         </div>
+        <Footer />
       </SidePanelProvider>
     </>
   );

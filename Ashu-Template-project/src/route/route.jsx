@@ -3,8 +3,12 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Todo from "../pages/Todo/Todo";
 import Pricing from "../pages/Pricing/Pricing";
 import ErrorPage from "../pages/Error/Error";
-import Contact, { contactLoader } from "../pages/Contact/Contact";
+import Contact from "../pages/Contact/Contact";
 import Datatable from "../pages/DataTable/Datatable";
+import Projects from "../pages/Projects/Projects";
+import Mobile from "../pages/Mobile/Mobile";
+import Web from "../pages/Web/Web";
+import About from "../pages/About/About";
 import App from "../App";
 
 export const router = createBrowserRouter([
@@ -18,85 +22,33 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "item1",
-        element: <h1>Hello I am Item 1</h1>,
-      },
-      {
-        path: "lalit",
+        path: "projects",
         children: [
           {
             index: true, // 1st Child dedicated to his with an idex true this is for absolute path
-            element: <h1>Hello I am Lalit Sarangi</h1>,
+            element: <Projects />,
           },
           {
-            path: "amulya",
-            index: true,
-            element: <h1>I am Amulya Son of Lalit</h1>,
+            path: "web",
+            element: <Web />,
           },
           {
-            path: "devi",
-            element: <h1>I am Devi Son of Lalit</h1>,
-          },
-          {
-            path: "sasmita",
-            children: [
-              {
-                index: true,
-                element: <h1>I am Sasmita Doughter of Lalit</h1>,
-              },
-              {
-                path: "sonu",
-                element: (
-                  <h1>
-                    I am Subhalaxmi Mishra Doughter of Sasmita & Grand Daughter
-                    Lalit
-                  </h1>
-                ),
-              },
-              {
-                path: "kalu",
-                element: (
-                  <h1>
-                    I am Ram Sankar Mishra Son of Sasmita & Grand Son Lalit
-                  </h1>
-                ),
-              },
-            ],
+            path: "mobile",
+            element: <Mobile />,
           },
         ],
       },
       {
-        path: "bansi",
-        element: <h1>Hello I am Banshidhar Hotta</h1>,
-      },
-      {
-        path: "item3",
-        element: <h1>Hello I am Item 3</h1>,
-      },
-      {
-        path: "data-table",
-        element: <Datatable />,
-      },
-      {
-        path: "todo",
-        element: <Todo />,
-      },
-      {
-        path: "setting",
-        element: <h1>Hello I am Setting Page</h1>,
-      },
-      {
-        path: "profile",
-        element: <h1>Hello I am Profile Page</h1>,
+        path: "about",
+        element: <About />,
       },
       {
         path: "price",
         element: <Pricing />,
       },
       {
-        path: "contact/:contactId",
+        path: "contact",
         element: <Contact />,
-        loader: contactLoader,
       },
     ],
   },

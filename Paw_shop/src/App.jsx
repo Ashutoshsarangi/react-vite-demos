@@ -13,7 +13,9 @@ function App() {
   return (
     <div>
       <SidePanel />
-      <Outlet />
+      <div>
+        <Outlet />
+      </div>
     </div>
   );
 }

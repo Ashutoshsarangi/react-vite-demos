@@ -1,3 +1,7 @@
 export default function Service() {
-  return <h1>Service</h1>;
+  return (
+    <div className="mt-3">
+      <h1>Service</h1>
+    </div>
+  );
 }
